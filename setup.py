@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0a1'
+version = '1.0a0.simplon.1'
 
 setup(name='plone.uuid',
       version=version,

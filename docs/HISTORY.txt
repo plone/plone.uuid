@@ -1,7 +1,9 @@
 Changelog
 =========
 
-1.0a1dev (unreleased)
----------------------
+1.0a0.simplon.1 - Release August 30, 2010
+-----------------------------------------
 
-- Initial release
+- Private release since Martin is not comfortable making a release to pypi yet.
+  [wichert]
+
