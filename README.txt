@@ -41,7 +41,11 @@ object to the ``IUUID`` interface::
     uuid = IUUID(context)
 
 The ``uuid`` variable will now be a (byte) string containing a UUID. If the
-UUID has not yet been assigned, adaptation will fail.
+UUID has not yet been assigned, adaptation will fail with a ``TypeError``.
+
+If you would rather get ``None`` instead of a ``TypeError``, you can do::
+
+    uuid = IUUID(context, None)
 
 UUID view
 =========
