@@ -16,6 +16,7 @@
     <include zcml:condition="not-installed Products.Five" package="zope.app.publisher" file="meta.zcml" />
     
     <adapter factory=".adapter.attributeUUID" />
+    <adapter factory=".adapter.MutableAttributeUUID" />
     <utility factory=".generator.UUID1Generator" />
     <subscriber handler=".handlers.addAttributeUUID" />
     

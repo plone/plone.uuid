@@ -108,3 +108,25 @@ class TestUUID(unittest.TestCase):
         
         self.assertEquals(unicode(uuid), response)
         self.assertTrue(isinstance(response, unicode))
+
+    def test_uuid_mutable(self):
+        from zope import interface
+        from zope import lifecycleevent
+        from zope import event
+        from plone.uuid import interfaces
+        
+        class Context(object):
+            interface.implements(interfaces.IAttributeUUID)
+        
+        context = Context()
+        event.notify(lifecycleevent.ObjectCreatedEvent(context))
+        
+        mutable = interfaces.IMutableUUID(context)
+        
+        uuid1 = mutable.get()
+        mutable.set('a uuid to set')
+        uuid2 = mutable.get()
+        uuid3 = interfaces.IUUID(context)
+        
+        self.failUnless(uuid1 != uuid2)
+        self.failUnless(uuid2 == uuid3)
