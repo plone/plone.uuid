@@ -1,14 +1,20 @@
 Changelog
 =========
 
+
 1.0b3 (Unreleased)
 ------------------
+
+- Add MANIFEST.in.
+  [WouterVH]
+
 
 1.0b2 (2011-01-03)
 ------------------
 
 - Add MutableUUID component
   [toutpt]
+
 
 1.0b1 (2010-11-27)
 ------------------
