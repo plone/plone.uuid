@@ -3,6 +3,7 @@ from zope import component
 
 from plone.uuid import interfaces
 
+
 @interface.implementer(interfaces.IUUID)
 @component.adapter(interfaces.IAttributeUUID)
 def attributeUUID(context):
