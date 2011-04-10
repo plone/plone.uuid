@@ -1,13 +1,26 @@
-from setuptools import setup, find_packages
 import os
+from setuptools import setup, find_packages
+
+
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+
 
 version = '1.0b3'
+
+long_description = (
+    read('README.txt')
+    + '\n' +
+#    read('plone', 'uuid', 'README.txt')
+#    + '\n' +
+    read('CHANGES.txt')
+    + '\n'
+    )
 
 setup(name='plone.uuid',
       version=version,
       description="UUIDs for content items",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=long_description,
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
@@ -28,7 +41,7 @@ setup(name='plone.uuid',
           'zope.interface',
           'zope.lifecycleevent',
           'zope.publisher',
-          
+
           # XXX: In Zope 2.13, we probably won't need this just to get the
           # browser:view directive
           'zope.app.publisher',
