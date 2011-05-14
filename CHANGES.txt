@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0.1 - unreleased
+------------------
+
+- Relicense under modified BSD license.
+  See http://plone.org/foundation/materials/foundation-resolutions/plone-framework-components-relicensing-policy
+  [davisagli]
 
 1.0 - 2011-05-13
 ----------------
