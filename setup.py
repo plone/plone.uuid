@@ -39,13 +39,10 @@ setup(name='plone.uuid',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'zope.browserpage',
           'zope.interface',
           'zope.lifecycleevent',
           'zope.publisher',
-
-          # XXX: In Zope 2.13, we probably won't need this just to get the
-          # browser:view directive
-          'zope.app.publisher',
       ],
       entry_points="""
       """,

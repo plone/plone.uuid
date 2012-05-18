@@ -7,14 +7,11 @@
     
     <include package="zope.component" file="meta.zcml" />
     <include package="zope.component" />
-    
-    
+
     <!-- Make sure we test the Zope 2 version of view registrations in Zope 2 -->
     <include zcml:condition="installed Products.Five" package="Products.Five.browser" file="meta.zcml" />
-    
-    <!-- XXX: In Zope 2.13, the browser:view directive moves to zope.publisher -->
-    <include zcml:condition="not-installed Products.Five" package="zope.app.publisher" file="meta.zcml" />
-    
+    <include zcml:condition="not-installed Products.Five" package="zope.browserpage" file="meta.zcml" />
+
     <adapter factory=".adapter.attributeUUID" />
     <adapter factory=".adapter.MutableAttributeUUID" />
     <utility factory=".generator.UUID1Generator" />
