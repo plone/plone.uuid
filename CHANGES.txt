@@ -7,6 +7,11 @@ Changelog
 - Use zope.browserpage.
   [hannosch]
 
+- Defensive UUID assignment in addAttributeUUID() handler: keep existing
+  UUID value if handler called more than once, except in case of object
+  copy event, where original and destination should have distinct UUID.
+  [seanupton]
+
 1.0.2 - 2011-10-18
 ------------------
 
