@@ -4,7 +4,15 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Reverted dash-less UUID generation, restoring RFC 4122 canonical
+  string representation with dashes.  This should only affect newly
+  created objects, thus preserving backward-compatibility for
+  existing content for which a UUID was generated using plone.uuid
+  1.0.2 and 1.0.3.  The motive for this change is preservation of
+  interoperability when UUIDs are used in multiple software systems.
+  UUID strings with dashes are also easier to detect using regular
+  expressions. 
+  [seanupton]
 
 
 1.0.3 (2012-05-31)

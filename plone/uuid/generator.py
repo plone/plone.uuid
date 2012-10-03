@@ -13,4 +13,4 @@ class UUID1Generator(object):
     implements(IUUIDGenerator)
 
     def __call__(self):
-        return uuid.uuid4().hex
+        return str(uuid.uuid4())
