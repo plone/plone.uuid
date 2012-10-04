@@ -46,6 +46,7 @@ class TestUUID(TestBase):
         uuid1 = generator()
         uuid2 = generator()
 
+        self.assertTrue(len(uuid1)==36 and '-' in uuid1)
         self.assertNotEqual(uuid1, uuid2)
         self.assertTrue(isinstance(uuid1, str))
         self.assertTrue(isinstance(uuid2, str))
