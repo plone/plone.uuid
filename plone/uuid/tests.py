@@ -18,7 +18,7 @@ def create_context():
     return context
 
 
-class TestUUID(unittest.TestCase):
+class TestBase(unittest.TestCase):
 
     def setUp(self):
         import zope.component.testing
@@ -32,6 +32,9 @@ class TestUUID(unittest.TestCase):
     def tearDown(self):
         import zope.component.testing
         zope.component.testing.tearDown()
+
+
+class TestUUID(TestBase):
 
     def test_default_generator(self):
 
@@ -133,3 +136,44 @@ class TestUUID(unittest.TestCase):
 
         self.failUnless(uuid1 != uuid2)
         self.failUnless(uuid2 == uuid3)
+
+
+class TestUUIDObject(TestBase):
+    """
+    Test IUUIDObject interface marker and adaptation to uuid.UUID.
+    """
+
+    def test_provides(self):
+        import uuid
+        from plone.uuid.interfaces import IUUIDObject, IUUID
+        self.assertTrue(IUUIDObject.providedBy(uuid.uuid4()))
+        self.assertFalse(IUUID.providedBy(uuid.uuid4()))
+
+    def test_fromcontext(self):
+        import uuid
+        from plone.uuid.interfaces import IUUIDObject, IUUID
+        context = create_context()  # event will fire saving uuid attr
+        uid = IUUID(context, None)  # uid string
+        self.assertIsNotNone(uid)
+        self.assertIsInstance(IUUIDObject(uid, None), uuid.UUID)
+
+    def test_fromstring(self):
+        import uuid
+        from plone.uuid.interfaces import IUUIDObject
+        uid = uuid.uuid4()
+        hexuid = uid.hex
+        fielded_uid = str(uid)
+        self.assertEqual(uid, IUUIDObject(hexuid), IUUIDObject(fielded_uid))
+
+    def test_fromuuid(self):
+        """Test adaptation to IUUIDObject from uuid.UUID no cast"""
+        import uuid
+        from plone.uuid.interfaces import IUUIDObject
+        uid = uuid.uuid4()
+        self.assertTrue(IUUIDObject(uid) is uid)
+    
+    def test_iuuid_from_uuid(self):
+        import uuid
+        from plone.uuid.interfaces import IUUID
+        uid = uuid.uuid4()
+        self.assertEqual(str(uid), IUUID(uid, None))

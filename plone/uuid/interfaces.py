@@ -15,6 +15,7 @@ class IUUIDAware(Interface):
     adaptable to IUUID.
     """
 
+
 class IAttributeUUID(IUUIDAware):
     """Marker interface for objects that have UUIDs stored in a simple
     attribute.
@@ -23,12 +24,14 @@ class IAttributeUUID(IUUIDAware):
     objects are created (IObjectCreatedEvent).
     """
 
+
 class IUUID(Interface):
     """Abstract representation of a UUID.
     
     Adapt an object to this interface to obtain its UUID. Adaptation will
     fail if the object does not have a UUID (yet).
     """
+
 
 class IMutableUUID(Interface):
     """Adapt an object to this interface to manage the UUID of an object
@@ -42,3 +45,14 @@ class IMutableUUID(Interface):
     def set(uuid):
         """Set the unique id of the context with the uuid value.
         """
+
+
+class IUUIDObject(Interface):
+    """
+    A marker for a uuid.UUID object from the Python standard
+    library.  This interface may be used for providedBy checks
+    and for adaptation.
+    
+    See: http://docs.python.org/library/uuid.html
+    """
+

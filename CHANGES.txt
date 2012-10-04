@@ -4,6 +4,11 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
+- Added support for new IUUIDObject interface as a marker for uuid.UUID
+  objects, with convenience adapters for string, content adaptation
+  contexts.
+  [seanupton]
+
 - Reverted dash-less UUID generation, restoring RFC 4122 canonical
   string representation with dashes.  This should only affect newly
   created objects, thus preserving backward-compatibility for
