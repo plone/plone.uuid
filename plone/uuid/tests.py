@@ -1,5 +1,22 @@
 import unittest
 
+from zope.event import notify
+from zope.interface import implements
+from zope.lifecycleevent import ObjectCreatedEvent
+
+from plone.uuid.interfaces import IAttributeUUID
+
+
+class Context(object):
+    implements(IAttributeUUID)
+
+
+def create_context():
+    """Create a context object and notify ObjectCreatedEvent"""
+    context = Context()
+    notify(ObjectCreatedEvent(context))
+    return context
+
 
 class TestUUID(unittest.TestCase):
 
@@ -37,9 +54,6 @@ class TestUUID(unittest.TestCase):
         from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
 
-        class Context(object):
-            implements(IAttributeUUID)
-
         context = Context()
 
         uuid = IUUID(context, None)
@@ -47,20 +61,12 @@ class TestUUID(unittest.TestCase):
 
     def test_attribute_uuid_create_handler(self):
 
-        from zope.interface import implements
-        from zope.event import notify
-        from zope.lifecycleevent import ObjectCreatedEvent
         from zope.lifecycleevent import ObjectCopiedEvent
 
-        from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
         from plone.uuid.interfaces import ATTRIBUTE_NAME
 
-        class Context(object):
-            implements(IAttributeUUID)
-
-        context = Context()
-        notify(ObjectCreatedEvent(context))
+        context = create_context()  # notifies ObjectCreatedEvent
 
         uuid = IUUID(context, None)
         self.assertNotEqual(uuid, None)
@@ -71,7 +77,7 @@ class TestUUID(unittest.TestCase):
         self.assertEqual(uuid, IUUID(context, None))
         
         # ...except when the UUID attribute was the result of a copy
-        copied = Context()
+        copied = create_context()
         setattr(copied, ATTRIBUTE_NAME, IUUID(context, None))
         self.assertNotEqual(IUUID(copied, None), None)  # mimic copied state
         self.assertEqual(uuid, IUUID(copied, None))     # before handler 
@@ -81,14 +87,8 @@ class TestUUID(unittest.TestCase):
 
     def test_uuid_view_not_set(self):
 
-        from zope.interface import implements
         from zope.component import getMultiAdapter
         from zope.publisher.browser import TestRequest
-
-        from plone.uuid.interfaces import IAttributeUUID
-
-        class Context(object):
-            implements(IAttributeUUID)
 
         context = Context()
 
@@ -101,20 +101,14 @@ class TestUUID(unittest.TestCase):
 
     def test_uuid_view(self):
 
-        from zope.interface import implements
         from zope.component import getMultiAdapter
-        from zope.event import notify
         from zope.lifecycleevent import ObjectCreatedEvent
         from zope.publisher.browser import TestRequest
 
         from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
 
-        class Context(object):
-            implements(IAttributeUUID)
-
-        context = Context()
-        notify(ObjectCreatedEvent(context))
+        context = create_context()
 
         uuid = IUUID(context, None)
 
@@ -126,16 +120,9 @@ class TestUUID(unittest.TestCase):
         self.assertTrue(isinstance(response, unicode))
 
     def test_uuid_mutable(self):
-        from zope import interface
-        from zope import lifecycleevent
-        from zope import event
         from plone.uuid import interfaces
 
-        class Context(object):
-            interface.implements(interfaces.IAttributeUUID)
-
-        context = Context()
-        event.notify(lifecycleevent.ObjectCreatedEvent(context))
+        context = create_context()
 
         mutable = interfaces.IMutableUUID(context)
 
