@@ -14,6 +14,15 @@
 
     <adapter factory=".adapter.attributeUUID" />
     <adapter factory=".adapter.MutableAttributeUUID" />
+    <adapter factory=".adapter.uuid_object" />
+    <adapter factory=".adapter.uuid_serialized" />
+    <adapter
+        provides=".interfaces.IUUIDObject"
+        factory="uuid.UUID"
+        for="*"
+        />  <!-- default adapter, useful for strings and other values the 
+                 uuid.UUID constructor can handle -->
+
     <utility factory=".generator.UUID1Generator" />
     <subscriber handler=".handlers.addAttributeUUID" />
     
