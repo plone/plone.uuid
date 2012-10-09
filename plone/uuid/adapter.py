@@ -28,7 +28,7 @@ class MutableAttributeUUID(object):
 
 
 @interface.implementer(interfaces.IUUIDObject)
-@component.adapter(interfaces.IUUID)
+@component.adapter(interfaces.IAttributeUUID)
 def uuid_object(context):
     uid_str = interfaces.IUUID(context, None)
     if uid_str is None:
