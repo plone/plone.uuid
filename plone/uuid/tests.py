@@ -65,16 +65,16 @@ class TestUUID(unittest.TestCase):
         uuid = IUUID(context, None)
         self.assertNotEqual(uuid, None)
         self.assertTrue(isinstance(uuid, str))
-        
+
         # calling handler again won't change if UUID already present:
         notify(ObjectCreatedEvent(context))
         self.assertEqual(uuid, IUUID(context, None))
-        
+
         # ...except when the UUID attribute was the result of a copy
         copied = Context()
         setattr(copied, ATTRIBUTE_NAME, IUUID(context, None))
         self.assertNotEqual(IUUID(copied, None), None)  # mimic copied state
-        self.assertEqual(uuid, IUUID(copied, None))     # before handler 
+        self.assertEqual(uuid, IUUID(copied, None))     # before handler
         notify(ObjectCopiedEvent(copied, original=context))
         self.assertNotEqual(uuid, None)
         self.assertNotEqual(uuid, IUUID(copied, None))  # copy has new UID

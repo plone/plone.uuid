@@ -26,11 +26,11 @@ implementation outlined above, you should:
 * Make sure they implement ``plone.uuid.interfaces.IAttributeUUID``. You
   can do this in code, via the ``implements()`` directive, or in ZCML, with
   a statement like::
-  
+
     <class class="my.package.MyClass">
         <implements interface="plone.uuid.interfaces.IAttributeUUID" />
     </class>
-  
+
 * Make sure that an ``IObjectCreatedEvent`` is fired for this object when it
   is first created.
 
@@ -76,10 +76,10 @@ There are two primary customisation points for this package:
   implementation. If you do this, you must also provide a mechanism for
   assigning UUIDs upon object creation, usually via an event handler. To
   obtain a UUID, use the ``IUUIDGenerator`` interface::
-  
+
     from zope.component import getUtility
     from plone.uuid.interfaces import IUUIDGenerator
-    
+
     generator = getUtility(IUUIDGenerator)
     uuid = generator()
 
