@@ -22,11 +22,11 @@ setup(name='plone.uuid',
       description="UUIDs for content items",
       long_description=long_description,
       # Get more strings from
-      # http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      # https://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
-        "Framework :: Plone : 4.3",
-        "Framework :: Plone : 5.0",
+        "Framework :: Plone :: 4.3",
+        "Framework :: Plone :: 5.0",
         "Programming Language :: Python",
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python :: 2.6",
