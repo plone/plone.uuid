@@ -5,7 +5,7 @@ version = '1.0.4.dev0'
 long_description = (
     open('README.rst').read() + '\n' +
     open('CHANGES.rst').read() + '\n'
-    )
+)
 
 setup(
     name='plone.uuid',
@@ -41,4 +41,4 @@ setup(
     ],
     entry_points="""
     """,
-    )
+)
