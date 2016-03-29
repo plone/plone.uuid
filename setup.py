@@ -26,7 +26,7 @@ setup(
     keywords='plone uuid',
     author='Martin Aspeli',
     author_email='optilude@gmail.com',
-    url='http://plone.org',
+    url='https://github.com/plone/plone.uuid',
     license='BSD',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['plone'],

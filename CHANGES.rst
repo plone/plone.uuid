@@ -4,7 +4,10 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+[Fixes]
+
+- Update setup.py url to point to github.
+  [esteele]
 
 
 1.0.3 (2012-05-31)
