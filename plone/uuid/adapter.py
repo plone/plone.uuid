@@ -10,9 +10,9 @@ def attributeUUID(context):
     return getattr(context, interfaces.ATTRIBUTE_NAME, None)
 
 
+@interface.implementer(interfaces.IMutableUUID)
+@component.adapter(interfaces.IAttributeUUID)
 class MutableAttributeUUID(object):
-    interface.implements(interfaces.IMutableUUID)
-    component.adapts(interfaces.IAttributeUUID)
 
     def __init__(self, context):
         self.context = context
