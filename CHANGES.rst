@@ -9,6 +9,8 @@ Changelog
 - Update setup.py url to point to github.
   [esteele]
 
+- Fixed issues preventing tests passing on Python 3
+  [datakurre]
 
 1.0.3 (2012-05-31)
 ------------------

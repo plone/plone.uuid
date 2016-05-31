@@ -1,5 +1,11 @@
 import unittest
 
+import sys
+if sys.version_info >= (3,):
+    text_type = str
+else:
+    text_type = unicode
+
 
 class TestUUID(unittest.TestCase):
 
@@ -32,13 +38,14 @@ class TestUUID(unittest.TestCase):
 
     def test_attribute_uuid_not_set(self):
 
-        from zope.interface import implements
+        from zope.interface import implementer
 
         from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
 
+        @implementer(IAttributeUUID)
         class Context(object):
-            implements(IAttributeUUID)
+            pass
 
         context = Context()
 
@@ -47,7 +54,7 @@ class TestUUID(unittest.TestCase):
 
     def test_attribute_uuid_create_handler(self):
 
-        from zope.interface import implements
+        from zope.interface import implementer
         from zope.event import notify
         from zope.lifecycleevent import ObjectCreatedEvent
         from zope.lifecycleevent import ObjectCopiedEvent
@@ -56,8 +63,9 @@ class TestUUID(unittest.TestCase):
         from plone.uuid.interfaces import IUUID
         from plone.uuid.interfaces import ATTRIBUTE_NAME
 
+        @implementer(IAttributeUUID)
         class Context(object):
-            implements(IAttributeUUID)
+            pass
 
         context = Context()
         notify(ObjectCreatedEvent(context))
@@ -81,14 +89,15 @@ class TestUUID(unittest.TestCase):
 
     def test_uuid_view_not_set(self):
 
-        from zope.interface import implements
+        from zope.interface import implementer
         from zope.component import getMultiAdapter
         from zope.publisher.browser import TestRequest
 
         from plone.uuid.interfaces import IAttributeUUID
 
+        @implementer(IAttributeUUID)
         class Context(object):
-            implements(IAttributeUUID)
+            pass
 
         context = Context()
 
@@ -97,11 +106,11 @@ class TestUUID(unittest.TestCase):
         response = view()
 
         self.assertEquals(u"", response)
-        self.assertTrue(isinstance(response, unicode))
+        self.assertTrue(isinstance(response, text_type))
 
     def test_uuid_view(self):
 
-        from zope.interface import implements
+        from zope.interface import implementer
         from zope.component import getMultiAdapter
         from zope.event import notify
         from zope.lifecycleevent import ObjectCreatedEvent
@@ -110,8 +119,9 @@ class TestUUID(unittest.TestCase):
         from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
 
+        @implementer(IAttributeUUID)
         class Context(object):
-            implements(IAttributeUUID)
+            pass
 
         context = Context()
         notify(ObjectCreatedEvent(context))
@@ -122,8 +132,8 @@ class TestUUID(unittest.TestCase):
         view = getMultiAdapter((context, request), name=u"uuid")
         response = view()
 
-        self.assertEquals(unicode(uuid), response)
-        self.assertTrue(isinstance(response, unicode))
+        self.assertEquals(text_type(uuid), response)
+        self.assertTrue(isinstance(response, text_type))
 
     def test_uuid_mutable(self):
         from zope import interface
@@ -131,8 +141,9 @@ class TestUUID(unittest.TestCase):
         from zope import event
         from plone.uuid import interfaces
 
+        @interface.implementer(interfaces.IAttributeUUID)
         class Context(object):
-            interface.implements(interfaces.IAttributeUUID)
+            pass
 
         context = Context()
         event.notify(lifecycleevent.ObjectCreatedEvent(context))
