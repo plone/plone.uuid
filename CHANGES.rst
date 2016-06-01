@@ -4,7 +4,7 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-[Fixes]
+Bug fixes:
 
 - Update setup.py url to point to github.
   [esteele]
