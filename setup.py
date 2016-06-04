@@ -35,11 +35,19 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'zope.browserpage',
         'zope.interface',
         'zope.lifecycleevent',
-        'zope.publisher',
     ],
+    extras_require={
+        'browser': [
+            'zope.browserpage',
+            'zope.publisher',
+        ],
+        'test': [
+            'zope.browserpage',
+            'zope.publisher',
+        ]
+    },
     entry_points="""
     """,
 )

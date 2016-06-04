@@ -6,7 +6,9 @@ Changelog
 
 Breaking changes:
 
-- *add item here*
+- Changed zope.browserpage and zope.publisher to be "optional" dependencies
+  with [browser] extras and configured only when available
+  [datakurre]
 
 New features:
 

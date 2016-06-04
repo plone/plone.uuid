@@ -8,20 +8,30 @@
     <include package="zope.component" file="meta.zcml" />
     <include package="zope.component" />
 
-    <!-- Make sure we test the Zope 2 version of view registrations in Zope 2 -->
-    <include zcml:condition="installed Products.Five" package="Products.Five.browser" file="meta.zcml" />
-    <include zcml:condition="not-installed Products.Five" package="zope.browserpage" file="meta.zcml" />
-
     <adapter factory=".adapter.attributeUUID" />
     <adapter factory=".adapter.MutableAttributeUUID" />
     <utility factory=".generator.UUID1Generator" />
     <subscriber handler=".handlers.addAttributeUUID" />
 
-    <browser:view
-        name="uuid"
-        class=".browser.UUIDView"
-        for=".interfaces.IUUIDAware"
-        permission="zope.Public"
-        />
+    <configure zcml:condition="installed zope.browserpage">
+      <!-- Make sure we test the Zope 2 version
+           of view registrations in Zope 2 -->
+      <include
+          package="Products.Five.browser" file="meta.zcml"
+          zcml:condition="installed Products.Five"
+          />
+
+      <include
+          package="zope.browserpage" file="meta.zcml"
+          zcml:condition="not-installed Products.Five"
+          />
+
+      <browser:view
+          name="uuid"
+          class=".browser.UUIDView"
+          for=".interfaces.IUUIDAware"
+          permission="zope.Public"
+          />
+    </configure>
 
 </configure>
