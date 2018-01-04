@@ -14,8 +14,8 @@ New features:
 
 Bug fixes:
 
-- *add item here*
-
+- Fix package dependencies.
+  [gforcada]
 
 1.0.4 (2016-06-02)
 ------------------

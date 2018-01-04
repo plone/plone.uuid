@@ -35,7 +35,9 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'Acquisition',
         'setuptools',
+        'zope.component',
         'zope.browserpage',
         'zope.interface',
         'zope.lifecycleevent',
@@ -43,9 +45,10 @@ setup(
     ],
     extras_require={
         'test': [
+            'zope.configuration',
+            'zope.event',
         ]
     },
-
     entry_points="""
     """,
 )
