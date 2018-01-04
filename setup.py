@@ -41,6 +41,11 @@ setup(
         'zope.lifecycleevent',
         'zope.publisher',
     ],
+    extras_require={
+        'test': [
+        ]
+    },
+
     entry_points="""
     """,
 )
