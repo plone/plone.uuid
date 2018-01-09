@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+import sys
 import unittest
 
-import sys
+
 if sys.version_info >= (3,):
     text_type = str
 else:

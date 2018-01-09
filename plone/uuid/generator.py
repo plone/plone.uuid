@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from plone.uuid.interfaces import IUUIDGenerator
 from zope.deprecation import deprecate
 from zope.interface import implementer

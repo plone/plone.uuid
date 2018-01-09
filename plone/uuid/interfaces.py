@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from zope.interface import Interface
+
 
 ATTRIBUTE_NAME = '_plone.uuid'
 

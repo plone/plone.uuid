@@ -1,7 +1,7 @@
-from zope import interface
-from zope import component
-
+# -*- coding: utf-8 -*-
 from plone.uuid import interfaces
+from zope import component
+from zope import interface
 
 
 @interface.implementer(interfaces.IUUID)
