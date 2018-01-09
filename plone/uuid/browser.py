@@ -1,7 +1,10 @@
-from zope.publisher.browser import BrowserView
+# -*- coding: utf-8 -*-
 from plone.uuid.interfaces import IUUID
+from zope.publisher.browser import BrowserView
 
 import sys
+
+
 if sys.version_info >= (3,):
     text_type = str
 else:

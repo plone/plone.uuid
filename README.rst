@@ -5,7 +5,7 @@ This is a minimal package that can be used to obtain a universally unique
 identifier (UUID) for an object.
 
 The default implementation uses the Python standard library ``uuid`` module
-to generate an RFC 4122-compliant UUID, using the ``uuid1()`` function. It
+to generate an RFC 4122-compliant UUID, using the ``uuid4()`` function. It
 will assign a UUID upon object creation (by subscribing to
 ``IObjectCreatedEvent`` from ``zope.lifecycleevent``) and store it in an
 attribute on the object.
@@ -70,8 +70,9 @@ There are two primary customisation points for this package:
 
 * You can change the default UUID generating algorithm by overriding the
   unnamed utility providing the ``IUUIDGenerator`` interface. The default
-  implementation simply calls ``uuid.uuid1()`` and casts the result to a
+  implementation simply calls ``uuid.uuid4()`` and casts the result to a
   ``str``.
+
 * You can change the UUID storage by providing a custom ``IUUID`` adapter
   implementation. If you do this, you must also provide a mechanism for
   assigning UUIDs upon object creation, usually via an event handler. To

@@ -17,6 +17,10 @@ Bug fixes:
 - Fix package dependencies.
   [gforcada]
 
+- Fix documentation and uuid generator class name to reflect the fact that we use the ``uuid4`` implementation instead of ``uuid1``.
+  [thet]
+
+
 1.0.4 (2016-06-02)
 ------------------
 
@@ -27,6 +31,7 @@ Bug fixes:
 
 - Fixed issues preventing tests passing on Python 3
   [datakurre]
+
 
 1.0.3 (2012-05-31)
 ------------------
@@ -39,11 +44,13 @@ Bug fixes:
   copy event, where original and destination should have distinct UUID.
   [seanupton]
 
+
 1.0.2 - 2011-10-18
 ------------------
 
 - Generate UUID without dashes.
   [elro]
+
 
 1.0.1 - 2011-05-20
 ------------------
@@ -51,6 +58,7 @@ Bug fixes:
 - Relicense under modified BSD license.
   See http://plone.org/foundation/materials/foundation-resolutions/plone-framework-components-relicensing-policy
   [davisagli]
+
 
 1.0 - 2011-05-13
 ----------------

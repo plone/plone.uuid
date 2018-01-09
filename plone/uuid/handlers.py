@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
+from plone.uuid.interfaces import ATTRIBUTE_NAME
+from plone.uuid.interfaces import IAttributeUUID
+from plone.uuid.interfaces import IUUIDGenerator
 from zope.component import adapter
 from zope.component import queryUtility
-
-from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 from zope.lifecycleevent.interfaces import IObjectCopiedEvent
+from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 
-from plone.uuid.interfaces import IUUIDGenerator
-from plone.uuid.interfaces import IAttributeUUID
-
-from plone.uuid.interfaces import ATTRIBUTE_NAME
 
 try:
     from Acquisition import aq_base
