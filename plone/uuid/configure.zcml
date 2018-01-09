@@ -14,7 +14,7 @@
 
     <adapter factory=".adapter.attributeUUID" />
     <adapter factory=".adapter.MutableAttributeUUID" />
-    <utility factory=".generator.UUID1Generator" />
+    <utility factory=".generator.UUID4Generator" />
     <subscriber handler=".handlers.addAttributeUUID" />
 
     <browser:view
