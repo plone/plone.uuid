@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.uuid.interfaces import IUUIDGenerator
 from zope.deprecation import deprecate
 from zope.interface import implementer
@@ -7,7 +6,7 @@ import uuid
 
 
 @implementer(IUUIDGenerator)
-class UUID4Generator(object):
+class UUID4Generator:
     """Default UUID implementation.
 
     Uses uuid.uuid4()

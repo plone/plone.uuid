@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.uuid.interfaces import ATTRIBUTE_NAME
 from plone.uuid.interfaces import IAttributeUUID
 from plone.uuid.interfaces import IUUIDGenerator

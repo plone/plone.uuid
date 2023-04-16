@@ -1,12 +1,8 @@
-# -*- coding: utf-8 -*-
 import sys
 import unittest
 
 
-if sys.version_info >= (3,):
-    text_type = str
-else:
-    text_type = unicode
+text_type = str
 
 
 class TestUUID(unittest.TestCase):
@@ -46,7 +42,7 @@ class TestUUID(unittest.TestCase):
         from plone.uuid.interfaces import IUUID
 
         @implementer(IAttributeUUID)
-        class Context(object):
+        class Context:
             pass
 
         context = Context()
@@ -66,7 +62,7 @@ class TestUUID(unittest.TestCase):
         from plone.uuid.interfaces import ATTRIBUTE_NAME
 
         @implementer(IAttributeUUID)
-        class Context(object):
+        class Context:
             pass
 
         context = Context()
@@ -98,16 +94,16 @@ class TestUUID(unittest.TestCase):
         from plone.uuid.interfaces import IAttributeUUID
 
         @implementer(IAttributeUUID)
-        class Context(object):
+        class Context:
             pass
 
         context = Context()
 
         request = TestRequest()
-        view = getMultiAdapter((context, request), name=u"uuid")
+        view = getMultiAdapter((context, request), name="uuid")
         response = view()
 
-        self.assertEquals(u"", response)
+        self.assertEqual("", response)
         self.assertTrue(isinstance(response, text_type))
 
     def test_uuid_view(self):
@@ -122,7 +118,7 @@ class TestUUID(unittest.TestCase):
         from plone.uuid.interfaces import IUUID
 
         @implementer(IAttributeUUID)
-        class Context(object):
+        class Context:
             pass
 
         context = Context()
@@ -131,10 +127,10 @@ class TestUUID(unittest.TestCase):
         uuid = IUUID(context, None)
 
         request = TestRequest()
-        view = getMultiAdapter((context, request), name=u"uuid")
+        view = getMultiAdapter((context, request), name="uuid")
         response = view()
 
-        self.assertEquals(text_type(uuid), response)
+        self.assertEqual(text_type(uuid), response)
         self.assertTrue(isinstance(response, text_type))
 
     def test_uuid_mutable(self):
@@ -144,7 +140,7 @@ class TestUUID(unittest.TestCase):
         from plone.uuid import interfaces
 
         @interface.implementer(interfaces.IAttributeUUID)
-        class Context(object):
+        class Context:
             pass
 
         context = Context()
@@ -157,5 +153,5 @@ class TestUUID(unittest.TestCase):
         uuid2 = mutable.get()
         uuid3 = interfaces.IUUID(context)
 
-        self.failUnless(uuid1 != uuid2)
-        self.failUnless(uuid2 == uuid3)
+        self.assertTrue(uuid1 != uuid2)
+        self.assertTrue(uuid2 == uuid3)

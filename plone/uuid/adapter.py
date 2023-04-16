@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.uuid import interfaces
 from zope import component
 from zope import interface
@@ -12,7 +11,7 @@ def attributeUUID(context):
 
 @interface.implementer(interfaces.IMutableUUID)
 @component.adapter(interfaces.IAttributeUUID)
-class MutableAttributeUUID(object):
+class MutableAttributeUUID:
 
     def __init__(self, context):
         self.context = context
