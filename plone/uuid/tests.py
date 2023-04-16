@@ -1,8 +1,4 @@
-import sys
 import unittest
-
-
-text_type = str
 
 
 class TestUUID(unittest.TestCase):
@@ -97,7 +93,7 @@ class TestUUID(unittest.TestCase):
         response = view()
 
         self.assertEqual("", response)
-        self.assertTrue(isinstance(response, text_type))
+        self.assertTrue(isinstance(response, str))
 
     def test_uuid_view(self):
         from plone.uuid.interfaces import IAttributeUUID
@@ -121,8 +117,8 @@ class TestUUID(unittest.TestCase):
         view = getMultiAdapter((context, request), name="uuid")
         response = view()
 
-        self.assertEqual(text_type(uuid), response)
-        self.assertTrue(isinstance(response, text_type))
+        self.assertEqual(str(uuid), response)
+        self.assertTrue(isinstance(response, str))
 
     def test_uuid_mutable(self):
         from plone.uuid import interfaces
