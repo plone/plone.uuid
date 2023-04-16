@@ -2,15 +2,12 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-version = '1.0.7.dev0'
+version = "1.0.7.dev0"
 
-long_description = (
-    open('README.rst').read() + '\n' +
-    open('CHANGES.rst').read() + '\n'
-)
+long_description = open("README.rst").read() + "\n" + open("CHANGES.rst").read() + "\n"
 
 setup(
-    name='plone.uuid',
+    name="plone.uuid",
     version=version,
     description="UUIDs for content items",
     long_description=long_description,
@@ -32,28 +29,28 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    keywords='plone uuid',
-    author='Martin Aspeli',
-    author_email='optilude@gmail.com',
-    url='https://github.com/plone/plone.uuid',
-    license='BSD',
+    keywords="plone uuid",
+    author="Martin Aspeli",
+    author_email="optilude@gmail.com",
+    url="https://github.com/plone/plone.uuid",
+    license="BSD",
     packages=find_packages(),
-    namespace_packages=['plone'],
+    namespace_packages=["plone"],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'Acquisition',
-        'setuptools',
-        'zope.component',
-        'zope.browserpage',
-        'zope.interface',
-        'zope.lifecycleevent',
-        'zope.publisher',
+        "Acquisition",
+        "setuptools",
+        "zope.component",
+        "zope.browserpage",
+        "zope.interface",
+        "zope.lifecycleevent",
+        "zope.publisher",
     ],
     extras_require={
-        'test': [
-            'zope.configuration',
-            'zope.event',
+        "test": [
+            "zope.configuration",
+            "zope.event",
         ]
     },
     entry_points="""

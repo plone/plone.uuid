@@ -15,7 +15,6 @@ except ImportError:
 
 @adapter(IAttributeUUID, IObjectCreatedEvent)
 def addAttributeUUID(obj, event):
-
     if not IObjectCopiedEvent.providedBy(event):
         if getattr(aq_base(obj), ATTRIBUTE_NAME, None):
             return  # defensive: keep existing UUID on non-copy create

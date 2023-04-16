@@ -1,16 +1,14 @@
 from zope.interface import Interface
 
 
-ATTRIBUTE_NAME = '_plone.uuid'
+ATTRIBUTE_NAME = "_plone.uuid"
 
 
 class IUUIDGenerator(Interface):
-    """Utility for generating UUIDs
-    """
+    """Utility for generating UUIDs"""
 
     def __call__():
-        """Generate a new UUID.
-        """
+        """Generate a new UUID."""
 
 
 class IUUIDAware(Interface):
@@ -42,9 +40,9 @@ class IMutableUUID(Interface):
     Be sure of what you are doing. UUID is supposed to be stable and
     widely used
     """
+
     def get():
         """Return the UUID of the context"""
 
     def set(uuid):
-        """Set the unique id of the context with the uuid value.
-        """
+        """Set the unique id of the context with the uuid value."""

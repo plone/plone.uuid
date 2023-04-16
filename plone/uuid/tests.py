@@ -6,7 +6,6 @@ text_type = str
 
 
 class TestUUID(unittest.TestCase):
-
     def setUp(self):
         from zope.configuration import xmlconfig
 
@@ -14,14 +13,14 @@ class TestUUID(unittest.TestCase):
         import zope.component.testing
 
         zope.component.testing.setUp()
-        xmlconfig.file('configure.zcml', plone.uuid)
+        xmlconfig.file("configure.zcml", plone.uuid)
 
     def tearDown(self):
         import zope.component.testing
+
         zope.component.testing.tearDown()
 
     def test_default_generator(self):
-
         from plone.uuid.interfaces import IUUIDGenerator
         from zope.component import getUtility
 
@@ -35,7 +34,6 @@ class TestUUID(unittest.TestCase):
         self.assertTrue(isinstance(uuid2, str))
 
     def test_attribute_uuid_not_set(self):
-
         from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
         from zope.interface import implementer
@@ -50,7 +48,6 @@ class TestUUID(unittest.TestCase):
         self.assertEqual(uuid, None)
 
     def test_attribute_uuid_create_handler(self):
-
         from plone.uuid.interfaces import ATTRIBUTE_NAME
         from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
@@ -78,13 +75,12 @@ class TestUUID(unittest.TestCase):
         copied = Context()
         setattr(copied, ATTRIBUTE_NAME, IUUID(context, None))
         self.assertNotEqual(IUUID(copied, None), None)  # mimic copied state
-        self.assertEqual(uuid, IUUID(copied, None))     # before handler
+        self.assertEqual(uuid, IUUID(copied, None))  # before handler
         notify(ObjectCopiedEvent(copied, original=context))
         self.assertNotEqual(uuid, None)
         self.assertNotEqual(uuid, IUUID(copied, None))  # copy has new UID
 
     def test_uuid_view_not_set(self):
-
         from plone.uuid.interfaces import IAttributeUUID
         from zope.component import getMultiAdapter
         from zope.interface import implementer
@@ -104,7 +100,6 @@ class TestUUID(unittest.TestCase):
         self.assertTrue(isinstance(response, text_type))
 
     def test_uuid_view(self):
-
         from plone.uuid.interfaces import IAttributeUUID
         from plone.uuid.interfaces import IUUID
         from zope.component import getMultiAdapter
@@ -145,7 +140,7 @@ class TestUUID(unittest.TestCase):
         mutable = interfaces.IMutableUUID(context)
 
         uuid1 = mutable.get()
-        mutable.set('a uuid to set')
+        mutable.set("a uuid to set")
         uuid2 = mutable.get()
         uuid3 = interfaces.IUUID(context)
 

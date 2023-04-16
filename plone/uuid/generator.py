@@ -17,9 +17,8 @@ class UUID4Generator:
 
 
 @deprecate(
-    'UUID1Generator was renamed to UUID4Generator, as we use uuid4 instead of '
-    'uuid1. Please use UUID4Generator instead.'
+    "UUID1Generator was renamed to UUID4Generator, as we use uuid4 instead of "
+    "uuid1. Please use UUID4Generator instead."
 )
 class UUID1Generator(UUID4Generator):
-    """BBB. Remove with next major version.
-    """
+    """BBB. Remove with next major version."""

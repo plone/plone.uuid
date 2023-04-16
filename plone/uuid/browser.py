@@ -8,8 +8,7 @@ text_type = str
 
 
 class UUIDView(BrowserView):
-    """A simple browser view that renders the UUID of its context
-    """
+    """A simple browser view that renders the UUID of its context"""
 
     def __call__(self):
         return text_type(IUUID(self.context, ""))

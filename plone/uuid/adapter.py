@@ -12,7 +12,6 @@ def attributeUUID(context):
 @interface.implementer(interfaces.IMutableUUID)
 @component.adapter(interfaces.IAttributeUUID)
 class MutableAttributeUUID:
-
     def __init__(self, context):
         self.context = context
 
