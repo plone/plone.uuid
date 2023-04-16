@@ -12,16 +12,9 @@
       />
   <include package="zope.component" />
 
-  <!-- Make sure we test the Zope 2 version of view registrations in Zope 2 -->
-  <include
-      package="Products.Five.browser"
-      file="meta.zcml"
-      zcml:condition="installed Products.Five"
-      />
   <include
       package="zope.browserpage"
       file="meta.zcml"
-      zcml:condition="not-installed Products.Five"
       />
 
   <adapter factory=".adapter.attributeUUID" />
