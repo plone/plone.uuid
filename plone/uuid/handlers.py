@@ -10,7 +10,10 @@ from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 try:
     from Acquisition import aq_base
 except ImportError:
-    aq_base = lambda v: v  # soft-dependency on Zope2, fallback
+
+    def aq_base(obj):
+        # soft-dependency on Zope2, fallback
+        return obj
 
 
 @adapter(IAttributeUUID, IObjectCreatedEvent)
