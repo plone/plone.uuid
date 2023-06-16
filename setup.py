@@ -1,16 +1,20 @@
+from pathlib import Path
 from setuptools import find_packages
 from setuptools import setup
 
 
 version = "2.0.1.dev0"
 
-long_description = open("README.rst").read() + "\n" + open("CHANGES.rst").read() + "\n"
+long_description = (
+    f"{Path('README.rst').read_text()}\n{Path('CHANGES.rst').read_text()}"
+)
 
 setup(
     name="plone.uuid",
     version=version,
     description="UUIDs for content items",
     long_description=long_description,
+    long_description_content_type="text/x-rst",
     # Get more strings from
     # https://pypi.org/classifiers/
     classifiers=[
