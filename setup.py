@@ -36,7 +36,6 @@ setup(
     python_requires=">=3.10",
     install_requires=[
         "Acquisition",
-        "setuptools",
         "zope.component",
         "zope.browserpage",
         "zope.interface",
