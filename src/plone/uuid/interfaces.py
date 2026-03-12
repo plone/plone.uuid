@@ -1,6 +1,5 @@
 from zope.interface import Interface
 
-
 ATTRIBUTE_NAME = "_plone.uuid"
 
 
